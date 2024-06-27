@@ -9,6 +9,10 @@ import java.util.logging.Logger;
 
 
 public class Conexion {
+
+    public static Connection getConnection() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
     // Variables de instancia
     String bd="centrodesalud";

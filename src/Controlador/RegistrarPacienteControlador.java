@@ -8,7 +8,10 @@ import Modelo.AcompañanteDAO;
 import Modelo.Paciente;
 import Modelo.PacienteDAO;
 import Vista.RegistrarPaciente;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -25,14 +28,21 @@ public class RegistrarPacienteControlador {
         this.pacienteDAO = pacienteDAO;
         this.acompañanteDAO = acompañanteDAO;
 
-        this.view.addGuardarButtonListener(e -> {
-            try {
-                guardarPaciente();
-            } catch (SQLException ex) {
-                ex.printStackTrace();
+        this.view.getGuardarButton().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    guardarPaciente();
+                    JOptionPane.showMessageDialog(view, "Paciente guardado con éxito.");
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(view, "Error al guardar el paciente: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                } catch (NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(view, "Error en el formato de los datos: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                }
             }
         });
-    
+     }
+     
      private void guardarPaciente() throws SQLException {
         
         Paciente paciente = new Paciente();

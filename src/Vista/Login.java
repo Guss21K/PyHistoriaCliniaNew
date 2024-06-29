@@ -161,7 +161,7 @@ public class Login extends javax.swing.JFrame {
         try {
             String user=txtUsuario.getText();
             String password =String.valueOf(txtPassword.getPassword());
-            String query ="SELECT * FROM credenciales WHERE usuario='"+user+"' and contraseña='"+password+"'";
+            String query ="SELECT * FROM credencial WHERE usuario='"+user+"' and contraseña='"+password+"'";
             Statement st= cx.conectar().createStatement();
             ResultSet rs = st.executeQuery(query);
             

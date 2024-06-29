@@ -50,15 +50,7 @@ public class Paciente {
     private int hitoriaclinica_id;
     private String NumHC;
     
-    
-    public Paciente(String ApellidoP, String ApellidoM, String Nombres, String telefono, String Dnibd, String direccion) {
-        this.ApellidoP = ApellidoP;
-        this.ApellidoM = ApellidoM;
-        this.Nombres = Nombres;
-        this.telefono = telefono;
-        this.Dnibd = Dnibd;
-        this.direccion = direccion;
-    }
+
     
     
     public String getGrupoSan() {

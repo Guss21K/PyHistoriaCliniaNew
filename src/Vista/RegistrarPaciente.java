@@ -7,13 +7,17 @@ package Vista;
 import com.toedter.calendar.JDateChooser;
 import java.awt.event.ActionListener;
 import java.util.Date;
+import javax.swing.JButton;
 
 /**
  *
  * @author jean2
  */
 public class RegistrarPaciente extends javax.swing.JFrame {
-
+    
+    public JButton getGuardarButton() {
+    return GuardarPaciente;
+}
     
     public RegistrarPaciente() {
         
@@ -22,7 +26,8 @@ public class RegistrarPaciente extends javax.swing.JFrame {
         
    
         
-        
+        sexoGroup.add(bMasculino);
+        sexoGroup.add(bFemenino);
         SeguroGroup.add(SeguroSi);
         SeguroGroup.add(SeguroNo);
         RHGroup.add(bRHSi);
@@ -98,7 +103,8 @@ public class RegistrarPaciente extends javax.swing.JFrame {
         txtLugarNac = new javax.swing.JTextField();
         jPanel17 = new javax.swing.JPanel();
         jLabel19 = new javax.swing.JLabel();
-        sexo_pac = new javax.swing.JComboBox<>();
+        bMasculino = new javax.swing.JRadioButton();
+        bFemenino = new javax.swing.JRadioButton();
         jPanel18 = new javax.swing.JPanel();
         jLabel20 = new javax.swing.JLabel();
         bRHSi = new javax.swing.JRadioButton();
@@ -660,7 +666,9 @@ public class RegistrarPaciente extends javax.swing.JFrame {
 
         jLabel19.setText("Sexo:");
 
-        sexo_pac.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Masculino", "Femenino" }));
+        bMasculino.setText("Masculino");
+
+        bFemenino.setText("Femenino");
 
         javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
         jPanel17.setLayout(jPanel17Layout);
@@ -670,8 +678,10 @@ public class RegistrarPaciente extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(sexo_pac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(102, Short.MAX_VALUE))
+                .addComponent(bMasculino)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(bFemenino)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel17Layout.setVerticalGroup(
             jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -679,8 +689,9 @@ public class RegistrarPaciente extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel19)
-                    .addComponent(sexo_pac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(9, Short.MAX_VALUE))
+                    .addComponent(bMasculino)
+                    .addComponent(bFemenino))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 270, 240, -1));
@@ -1126,14 +1137,15 @@ public class RegistrarPaciente extends javax.swing.JFrame {
             jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel30Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel32)
-                    .addComponent(txtAcomApellidoP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel36)
                         .addComponent(txtAcomApellidoM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel37)
-                        .addComponent(txtAcomNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtAcomNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel32)
+                        .addComponent(txtAcomApellidoP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -1391,7 +1403,9 @@ public class RegistrarPaciente extends javax.swing.JFrame {
 
     private void GuardarPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardarPacienteActionPerformed
         // TODO add your handling code here:
-
+       
+       
+        
       
     }//GEN-LAST:event_GuardarPacienteActionPerformed
 
@@ -1438,6 +1452,14 @@ public class RegistrarPaciente extends javax.swing.JFrame {
     public String getAcompañanteTelefono() { return txtAcomTelefono.getText(); }
     public String getAcompañanteDni() { return txtAcomDNI.getText(); }
     public String getAcompañanteDomicilio() { return txtAcomDomicilio.getText(); }
+    public String getSexo() {
+        if (bMasculino.isSelected()) {
+            return "M";
+        } else if (bFemenino.isSelected()) {
+            return "F";
+        }
+        return null;
+    }
     
     public void addGuardarButtonListener(ActionListener listener) {
         GuardarPaciente.addActionListener(listener);
@@ -1493,6 +1515,8 @@ public class RegistrarPaciente extends javax.swing.JFrame {
     private javax.swing.JRadioButton SeguroSi;
     private javax.swing.JRadioButton bAcompañanteNo;
     private javax.swing.JRadioButton bAcompañanteSi;
+    private javax.swing.JRadioButton bFemenino;
+    private javax.swing.JRadioButton bMasculino;
     private javax.swing.JRadioButton bRHNo;
     private javax.swing.JRadioButton bRHSi;
     private javax.swing.JButton jButton1;
@@ -1572,7 +1596,6 @@ public class RegistrarPaciente extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField4;
     private javax.swing.ButtonGroup sexoGroup;
-    private javax.swing.JComboBox<String> sexo_pac;
     private javax.swing.JTextField txtAcomApellidoM;
     private javax.swing.JTextField txtAcomApellidoP;
     private javax.swing.JTextField txtAcomDNI;
